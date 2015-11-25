@@ -1,12 +1,26 @@
 {{outlet}}
 
-<textarea rows=10 cols=80 id='code'>function saludar() {
-  alert("pepe");
-}
+<div class="row">
+  <div class="col-xs-6 bg-info"></div>
+  <div class="col-xs-6 bg-danger">
+    <button class="btn btn-success" {{action "run"}}>Run</button>
+  </div>
+</div>
 
-saludar();
-</textarea>
 
-<p>
-  <button {{action "run"}}>Run</button>
-</p>
+<div class="row">
+  <div class="col-xs-6 bg-info">RESULT</div>
+  <div class="col-xs-6 bg-danger">
+    {{#textarea id='code' value=code rows=20}}{{/textarea}}
+  </div>
+</div>
+
+
+<div class="row">
+  {{#if lastError}}
+    <div class="col-xs-12 errorContainer">
+      {{lastError}}
+      <button {{action "close"}} class="btn btn-xs btn-danger pull-right">cerrar</button>
+    </div>
+  {{/if}}
+</div>

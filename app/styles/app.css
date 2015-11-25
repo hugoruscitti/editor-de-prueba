@@ -1,0 +1,20 @@
+textarea#code {
+  width: 100% !important;
+  height: 100% !important;
+  font-family: monospace;
+}
+
+.errorContainer {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+
+  color: red;
+  font-family: monospace;
+  border-top: 2px solid red;
+  position: absolute;
+  bottom: 0;
+  background-color: #FFEEEE;
+}

@@ -22,6 +22,8 @@ module.exports = function(defaults) {
   
   app.import("bower_components/bootstrap/dist/css/bootstrap.css");
   app.import("vendor/libs/browser.js");
+  app.import("vendor/libs/phaser.js");
+  app.import("vendor/libs/pilasengine.js");
 
   return app.toTree();
 };

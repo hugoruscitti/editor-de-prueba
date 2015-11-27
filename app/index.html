@@ -7,6 +7,22 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<script>
+(function (window) {
+  if (window && window.process && window.process.type) {
+      window.ELECTRON = true;
+  }
+
+  window.requireNode = window.require;
+  window.moduleNode = window.module;
+  window.processNode = window.process;
+
+  delete window.process;
+  delete window.require;
+  delete window.module;
+})(this);
+</script>
+
     {{content-for 'head'}}
 
     <link rel="stylesheet" href="assets/vendor.css">
@@ -16,6 +32,63 @@
   </head>
   <body>
     {{content-for 'body'}}
+
+
+<script>
+(function (window) {
+    if (!window.ELECTRON) {
+        return;
+    }
+
+    // Restore Electron variables.
+    window.process = window.processNode;
+
+    // Redefine a global `require` function that can satisfy both
+    // Node and AMD module systems.
+    var requireAMD = window.require;
+    var requireNode = window.requireNode;
+
+    if (requireAMD) {
+        window.require = function () {
+            try {
+                return requireAMD.apply(null, arguments);
+            } catch (e) {
+                return requireNode.apply(null, arguments);
+            }
+        };
+    } else {
+        window.require = requireNode;
+    }
+})(this);
+</script>
+
+
+
+
+<script>
+(function () {
+    // Exit immediately if we're not running in Electron
+    if (!window.ELECTRON) {
+        return;
+    }
+
+    // Reload the page when anything in `dist` changes
+    var fs = window.requireNode('fs');
+    var watchDir = './';
+
+    if (fs.existsSync(watchDir)) {
+        fs.watch(watchDir, function () {
+
+          setTimeout(function() {
+            window.location.reload();
+          }, 1000);
+        });
+    }
+})();
+</script>
+
+
+
 
     <script src="assets/vendor.js"></script>
     <script src="assets/editor-de-prueba.js"></script>

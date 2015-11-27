@@ -5,6 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'editor-de-prueba',
     environment: environment,
     baseURL: '/',
+    //locationType: 'hash',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {

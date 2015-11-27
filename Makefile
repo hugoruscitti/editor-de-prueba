@@ -18,12 +18,13 @@ comandos:
 	@echo ""
 
 iniciar:
-	npm install; bower install
-	rm -r -f repo_pilasengine.js
+	@echo "${G}Instalando dependencias ... ${N}"
+	@npm install; bower install
+	@rm -r -f repo_pilasengine.js
 	@echo "${G}Clonando el repositorio de pilasengine.js ... ${N}"
-	git clone https://github.com/hugoruscitti/pilasengine.js.git repo_pilasengine.js
+	@git clone https://github.com/hugoruscitti/pilasengine.js.git repo_pilasengine.js
 	@echo "${G}Instalando dependencias de pilasengine.js ... ${N}"
-	cd repo_pilasengine.js; make iniciar
+	@cd repo_pilasengine.js; make iniciar
 
 update:
 	cd repo_pilasengine.js; git stash; git pull; make compilar; git stash pop

@@ -3,6 +3,7 @@
 # compiled output
 /dist
 /tmp
+/repo_pilasengine.js
 
 # dependencies
 /node_modules

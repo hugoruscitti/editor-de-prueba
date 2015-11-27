@@ -1,5 +1,5 @@
-/* globals babel */
 import Ember from 'ember';
+/* globals babel */
 
 export default Ember.Service.extend({
 

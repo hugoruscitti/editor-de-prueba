@@ -20,6 +20,9 @@ comandos:
 	@echo "    ${G}build${N}           Compila la aplicación."
 	@echo "    ${G}test_mac${N}        Ejecuta la aplicación en modo desarrollo."
 	@echo ""
+	@echo "    ${G}version${N}         Aumenta la versión."
+	@echo "    ${G}sync${N}            Sincroniza la versión generada."
+	@echo ""
 
 
 _instalar_dependencias:
@@ -32,6 +35,17 @@ iniciar: _instalar_dependencias
 	@git clone https://github.com/hugoruscitti/pilasengine.js.git repo_pilasengine.js
 	@echo "${G}Instalando dependencias de pilasengine.js ... ${N}"
 	@cd repo_pilasengine.js; make iniciar
+
+version:
+	# patch || minor
+	@bumpversion patch --current-version ${VERSION} Makefile --list
+
+subir_version:
+	git commit -am 'release ${VERSION}'
+	git tag '${VERSION}'
+	git push
+	git push --all
+	git push --tags
 
 iniciar_dev: _instalar_dependencias
 	@echo "${G}Vinculando el repositorio de pilasengine.js ... ${N}"

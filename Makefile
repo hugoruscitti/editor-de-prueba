@@ -17,6 +17,7 @@ comandos:
 	@echo "    ${G}iniciar_dev${N}     Instala dependencias con enlaces simbólicos."
 	@echo "    ${G}update${N}          Actualiza pilasengine y dependencias."
 	@echo ""
+	@echo "    ${G}build${N}           Compila la aplicación."
 	@echo "    ${G}test_mac${N}        Ejecuta la aplicación en modo desarrollo."
 	@echo ""
 
@@ -46,6 +47,9 @@ update:
 	cp repo_pilasengine.js/dist/js/phaser.js vendor/libs/phaser.js
 	cp repo_pilasengine.js/dist/js/pilasengine.js vendor/libs/pilasengine.js
 	cp -r repo_pilasengine.js/dist/data/* public/data/
+	
+build:
+	ember build
 
 test_mac:
 	electron dist

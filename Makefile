@@ -1,4 +1,4 @@
-VERSION=0.0.1
+VERSION=0.0.2
 NOMBRE="editor-de-prueba"
 
 N=[0m

@@ -40,7 +40,7 @@ version:
 	# patch || minor
 	@bumpversion patch --current-version ${VERSION} Makefile --list
 
-subir_version:
+sync:
 	git commit -am 'release ${VERSION}'
 	git tag '${VERSION}'
 	git push

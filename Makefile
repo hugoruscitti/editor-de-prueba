@@ -6,22 +6,30 @@ G=[01;32m
 Y=[01;33m
 B=[01;34m
 
+DMG_NAME=editor-de-prueba-${VERSION}.dmg
+NAME=editor-de-prueba
 
 comandos:
 	@echo ""
 	@echo "${B}Comandos disponibles para ${Y}${NOMBRE}${N} (versión: ${VERSION})"
 	@echo ""
-	@echo "  ${Y}Para desarrolladores${N}"
+	@echo "  ${Y}Comandos iniciales${N}"
 	@echo ""
 	@echo "    ${G}iniciar${N}         Instala dependencias."
 	@echo "    ${G}iniciar_dev${N}     Instala dependencias con enlaces simbólicos."
 	@echo "    ${G}update${N}          Actualiza pilasengine y dependencias."
 	@echo ""
+	@echo "  ${Y}Comandos de desarrollo${N}"
+	@echo ""
 	@echo "    ${G}build${N}           Compila la aplicación."
 	@echo "    ${G}test_mac${N}        Ejecuta la aplicación en modo desarrollo."
 	@echo ""
+	@echo "  ${Y}Comandos de publicación${N}"
+	@echo ""
 	@echo "    ${G}version${N}         Aumenta la versión."
 	@echo "    ${G}sync${N}            Sincroniza la versión generada."
+	@echo "    ${G}dist${N}            Genera los binarios."
+	@echo "    ${G}upload${N}          Sube los binarios a github-releases."
 	@echo ""
 
 
@@ -68,5 +76,13 @@ build:
 test_mac:
 	electron dist
 
-.PHONY: docs
+dist:
+	electron-packager dist/ ${NAME} --platform=darwin --arch=x64 --version=0.35.1
+	hdiutil create -volname ${NAME} -srcfolder ${NAME}-darwin-x64/${NAME}.app -ov -format UDZO ${DMG_NAME}
+
+upload:
+	publish-release --token 35ff7e5428cfab187f9be32bc37149db1c80883e --owner hugoruscitti --repo ${NAME} --name "${VERSION}" --assets ${DMG_NAME}
+	
+
+.PHONY: docs dist upload
 

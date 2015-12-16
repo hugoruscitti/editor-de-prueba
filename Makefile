@@ -82,7 +82,7 @@ test_mac:
 
 dist: build
 	electron-packager dist/ ${NAME} --platform=darwin --arch=x64 --version=0.35.1
-	hdiutil create -volname ${NAME} -srcfolder ${NAME}-darwin-x64/${NAME}.app -ov -format UDZO ${DMG_NAME}
+	#hdiutil create -volname ${NAME} -srcfolder ${NAME}-darwin-x64/${NAME}.app -ov -format UDZO ${DMG_NAME}
 
 upload:
 	publish-release --token 35ff7e5428cfab187f9be32bc37149db1c80883e --owner hugoruscitti --repo ${NAME} --name "${VERSION}" --assets ${DMG_NAME}

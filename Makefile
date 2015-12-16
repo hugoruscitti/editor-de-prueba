@@ -80,7 +80,7 @@ build_watch:
 test_mac:
 	electron dist
 
-dist:
+dist: build
 	electron-packager dist/ ${NAME} --platform=darwin --arch=x64 --version=0.35.1
 	hdiutil create -volname ${NAME} -srcfolder ${NAME}-darwin-x64/${NAME}.app -ov -format UDZO ${DMG_NAME}
 

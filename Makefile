@@ -22,6 +22,7 @@ comandos:
 	@echo "  ${Y}Comandos de desarrollo${N}"
 	@echo ""
 	@echo "    ${G}build${N}           Compila la aplicación."
+	@echo "    ${G}build_watch${N}     Compila la aplicación constantemente."
 	@echo "    ${G}test_mac${N}        Ejecuta la aplicación en modo desarrollo."
 	@echo ""
 	@echo "  ${Y}Comandos de publicación${N}"
@@ -72,6 +73,9 @@ update:
 	
 build:
 	ember build
+
+build_watch:
+	ember build --watch
 
 test_mac:
 	electron dist

@@ -27,5 +27,14 @@ module.exports = function(defaults) {
   app.import("vendor/libs/pilasengine.js");
   app.import("vendor/libs/browser.js");
 
+
+  // Iconos
+  app.import("vendor/ionicons2/css/ionicons.css");
+  app.import("vendor/ionicons2/fonts/ionicons.eot", {destDir: "fonts"});
+  app.import("vendor/ionicons2/fonts/ionicons.svg", {destDir: "fonts"});
+  app.import("vendor/ionicons2/fonts/ionicons.ttf", {destDir: "fonts"});
+  app.import("vendor/ionicons2/fonts/ionicons.woff", {destDir: "fonts"});
+  app.import("vendor/raleway.woff2");
+
   return app.toTree();
 };
